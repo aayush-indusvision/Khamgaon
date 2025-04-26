@@ -1,0 +1,12 @@
+*.avi
+*.txt
+*.jpg
+/New_Saved_Clips_1
+/New_Saved_Clips_2
+/Working_Saved_Clips_1
+/Working_Saved_Clips_2
+/__pycache__
+Save_Feed_1_Operator_Working.py
+Save_Feed_2_Operator_Working.py
+save_feed_1.py
+save_feed_2.py
