@@ -80,10 +80,12 @@ def process_rtsp_stream(rtsp_url):
 
                 # Set jam_state based on valid jam
                 if jamming:
-                    jam_state = 1 if jam_duration >= 2 else 0
+                    state=plc.write(f"BSM_AI_CAMERA_READ_INT[2]",1)
+                    if state:
+                        print(f"Writing 1 to PLC")
                 else:
-                    jam_state = 0
-                    print(f"Time: {format_time(current_time)}, Jam State: {jam_state}")
+                    state=plc.write(f"BSM_AI_CAMERA_READ_INT[2]",0)
+                    # print(f"Time: {format_time(current_time)}, Jam State: {jam_state}")
 
                 # Draw ROI and status
                 cv2.rectangle(frame, (ROI_TOP_LEFT_x, ROI_TOP_LEFT_y), (ROI_BOTTOM_RIGHT_x, ROI_BOTTOM_RIGHT_y), color, 3)
