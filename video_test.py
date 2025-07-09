@@ -124,6 +124,7 @@ def process_video(video_path):
         difference = avg_cropped - avg_full
 
         # Check for jam
+        print(difference)
         is_jam = difference > DIFFERENCE_THRESHOLD
         color = (0, 0, 255) if is_jam else (0, 255, 0)
         status = "Jam" if is_jam else "Good"
@@ -154,7 +155,7 @@ def process_video(video_path):
     # Handle case if jamming was active at end of video
     if jamming:
         jam_duration = (frame_idx - jam_start_frame) / fps
-        if jam_duration >= 2:
+        if jam_duration >= 5:
             jam_timestamp = format_time(jam_start_frame / fps)
             print(f"[JAM DETECTED] Timestamp: {jam_timestamp} (Duration: {jam_duration:.2f} sec)")
 
@@ -162,5 +163,5 @@ def process_video(video_path):
     cv2.destroyAllWindows()
 
 # Example usage
-video_path = r"assets\video_5.dav"
+video_path = r"jam_20250702-234630.mp4"
 process_video(video_path)
